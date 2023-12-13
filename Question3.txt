@@ -1,0 +1,85 @@
+import pandas as pd
+import numpy as np
+
+data = np.random.rand(50, 3)
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+df1 = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+num_nulls = int(0.1 * df.size)
+null_indices = np.random.choice(df.size, num_nulls, replace=False)
+df.values.flat[null_indices] = np.nan
+
+# a. Identify and count missing values
+print("(a)")
+print()
+
+missing_values = df.isnull().sum()
+
+print(missing_values)
+print()
+
+# b. Drop columns with more than 5 null values
+print("(b)")
+print()
+
+print("Initial DataFrame : \n",df)
+print()
+
+df = df.dropna(thresh=len(df) - 5, axis=1)
+
+print("DataFrame after Dropping Column with Null Values > 5 : \n",df)
+print()
+
+# c. Identify the row label with the maximum sum of values and drop that row
+print("(c)")
+print()
+
+max_row_label = df.sum(axis=1).idxmax()
+print("Row Label with Max Sum : ",max_row_label)
+print()
+
+df = df.drop(max_row_label)
+
+print("DataFrame after Dropping The Same : \n",df)
+print()
+
+# d. Sort the DataFrame based on the first column
+print("(d)")
+print()
+
+df = df1.sort_values(by = "Column1")
+
+print("DataFrame with Sorted Values : \n",df)
+print()
+
+# e. Remove duplicates from the first column
+print("(e)")
+print()
+
+df = df.drop_duplicates(subset='Column1')
+
+print("DataFrame After Dropping Duplicates : \n",df)
+print()
+
+# f. Find the correlation between the first and second column & the covariance between the second and third column
+print("(f)")
+print()
+
+correlation = df["Column1"].corr(df["Column2"])
+covariance = df["Column2"].cov(df["Column3"])
+
+print("Correlation b/w 1st & 2nd Columns : ",correlation)
+print("Covariance b/w 2nd & 3rd Columns : ",covariance)
+print()
+
+# g. Discretize the second column and create 5 bins
+# print("(g)")
+# print()
+
+# bins=df["Column2_bins"] = pd.cut(df["Column2"], 5)
+
+# print(bins)
+# print()
+# print("Final DataFrame : ")
+# print(df)
+

@@ -1,0 +1,238 @@
+import numpy as np
+
+data = np.random.randn(2, 3)
+
+print(data)
+print()
+print(data * 10)
+print()
+print(data + data)
+print()
+print("Shape of Randon Matrix : ",data.shape)
+print()
+print("DataType : ",data.dtype)
+print()
+data1 = [6, 7.5, 8, 0, 1]
+arr1 = np.array(data1)
+print(arr1)
+print()
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+print(arr2)
+print()
+print(arr2.ndim,"\n\n",arr2.shape,"\n\n",arr1.dtype,"\n\n",arr2.dtype,"\n")
+print()
+print(np.zeros(10))
+print()
+print(np.zeros((3, 6)))
+print()
+print(np.empty((2, 3, 2)))
+print()
+print(np.arange(15))
+print()
+
+arr1 = np.array([1, 2, 3], dtype=np.float64)
+arr2 = np.array([1, 2, 3], dtype=np.int32)
+print(arr1.dtype)
+print(arr2.dtype)
+print()
+
+arr = np.array([1, 2, 3, 4, 5])
+print(arr.dtype)
+print()
+
+float_arr = arr.astype(np.float64)
+print(float_arr.dtype)
+print()
+arr = np.array([3.7, -1.2, -2.6, 0.5, 12.9, 10.1])
+print(arr)
+print(arr.astype(np.int32))
+print()
+
+numeric_strings = np.array(['1.25', '-9.6', '42'], dtype=np.string_)
+print(numeric_strings.astype(float))
+print()
+
+int_array = np.arange(10)
+calibers = np.array([.22, .270, .357, .380, .44, .50], dtype=np.float64)
+print(int_array.astype(calibers.dtype))
+
+empty_uint32 = np.empty(8, dtype='u4')
+print(empty_uint32)
+print()
+
+arr = np.array([[1., 2., 3.], [4., 5., 6.]])
+print(arr * arr)
+print()
+print(arr - arr)
+print()
+print(1 / arr)
+print()
+print(arr ** 0.5)
+
+arr2 = np.array([[0., 4., 1.], [7., 2., 12.]])
+print(arr2)
+print()
+print(arr2 > arr)
+
+arr = np.arange(10)
+print(arr)
+
+print(arr[5])
+print()
+print(arr[5:8])
+print()
+
+arr[5:8] = 12
+print(arr)
+print()
+
+arr_slice = arr[5:8]
+print(arr_slice)
+
+arr_slice[1] = 12345
+print(arr)
+print()
+
+arr_slice[:] = 64
+print(arr)
+print()
+
+arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print(arr2d[2])
+print()
+print(arr2d[0][2])
+print()
+print(arr2d[0, 2])
+print()
+print(arr2d[:2])
+print()
+print(arr2d[:2, 1:])
+print()
+print(arr2d[1, :2])
+print()
+print(arr2d[:2, 2])
+print()
+print(arr2d[:, :1])
+print()
+
+arr2d[:2, 1:] = 0
+print(arr2d)
+print()
+
+names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
+data = np.random.randn(7, 4)
+
+print(names)
+print()
+print(data)
+print()
+print(names == 'Bob')
+print()
+print(data[names == 'Bob'])
+print(data[names == 'Bob', 2:])
+print()
+print(data[names == 'Bob', 3])
+print()
+print(names != 'Bob')
+print()
+print(data[~(names == 'Bob')])
+
+cond = names == 'Bob'
+print(data[~cond])
+print()
+
+mask = (names == 'Bob') | (names == 'Will')
+print(mask)
+print()
+print(data[mask])
+print()
+
+data[data < 0] = 0
+print(data)
+print()
+
+data[names != 'Joe'] = 7
+print(data)
+print()
+
+arr = np.empty((8, 4))
+
+for i in range(8):
+  arr[i] = i
+
+print(arr)
+print()
+print(arr[[4, 3, 0, 6]])
+print()
+print(arr[[-3, -5, -7]])
+print()
+
+arr = np.arange(32).reshape((8, 4))
+print(arr)
+print()
+
+print(arr[[1, 5, 7, 2], [0, 3, 1, 2]])
+print()
+
+print(arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]])
+print()
+
+arr = np.arange(15).reshape((3, 5))
+print(arr)
+print()
+print(arr.T)
+print()
+
+arr = np.random.randn(6, 3)
+print(arr)
+print()
+print(np.dot(arr.T, arr))
+
+arr = np.arange(16).reshape((2, 2, 4))
+print(arr)
+print()
+print(arr.transpose((1, 0, 2)))
+print()
+
+print(arr)
+print()
+print(arr.swapaxes(1, 2))
+print()
+
+arr = np.arange(10)
+
+print(arr)
+print()
+print(np.sqrt(arr))
+print()
+print(np.exp(arr))
+
+x = np.random.randn(8)
+y = np.random.randn(8)
+print(x)
+print()
+print(y)
+print()
+print(np.maximum(x, y))
+
+arr = np.random.randn(7) * 5
+
+print(arr)
+print()
+
+remainder, whole_part = np.modf(arr)
+
+print(remainder)
+print()
+print(whole_part)
+print()
+
+print(arr)
+print()
+print(np.sqrt(arr))
+print()
+print(np.sqrt(arr, arr))
+print()
+print(arr)
